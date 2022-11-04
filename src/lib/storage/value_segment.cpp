@@ -28,7 +28,6 @@ template <typename T>
 ChunkOffset ValueSegment<T>::size() const {
   // Implementation goes here
   return contents.size();
-  return ChunkOffset{std::numeric_limits<ChunkOffset>::max()};
 }
 
 template <typename T>

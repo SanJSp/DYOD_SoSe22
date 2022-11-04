@@ -41,8 +41,12 @@ class Chunk : private Noncopyable {
   // Returns the segment at a given position.
   std::shared_ptr<AbstractSegment> get_segment(ColumnID column_id) const;
 
+  size_t estimate_memory_usage() const;
+
+
  protected:
   // Implementation goes here
+  std::vector<std::shared_ptr<AbstractSegment>> _contents;
 };
 
 }  // namespace opossum
