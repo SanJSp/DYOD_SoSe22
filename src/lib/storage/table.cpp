@@ -42,7 +42,7 @@ void Table::add_column(const std::string& name, const std::string& type) {
 
 void Table::create_new_chunk() {
   auto chunk = std::make_shared<Chunk>();
-  if(_contents.size() > 0){
+  if(!_contents.empty()){
     for(auto [ name,  type ] : column_definition_by_index){
       resolve_data_type(type, [&](const auto data_type_t) {
         using SegmentDataType = typename decltype(data_type_t)::type;
@@ -56,7 +56,7 @@ void Table::create_new_chunk() {
 }
 
 void Table::append(const std::vector<AllTypeVariant>& values) {
-  if(_contents.size() == 0 || _contents[_contents.size()-1]->size() == target_chunk_size()) {
+  if(_contents.empty() || _contents[_contents.size()-1]->size() == target_chunk_size()) {
     create_new_chunk();
   }
   auto last_chunk_index = _contents.size() - 1;

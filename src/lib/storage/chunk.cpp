@@ -31,7 +31,7 @@ void Chunk::append(const std::vector<AllTypeVariant>& values) {
 
 std::shared_ptr<AbstractSegment> Chunk::get_segment(const ColumnID column_id) const {
   // Implementation goes here
-  DebugAssert(column_id < _contents.size(), "ColumnID greate than Column count");
+  DebugAssert(column_id < _contents.size(), "ColumnID greater than Column count");
   return _contents[column_id];
 }
 
