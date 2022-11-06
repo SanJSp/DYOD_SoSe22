@@ -20,7 +20,7 @@ class StorageManager : private Noncopyable {
   // Adds a table to the storage manager.
   void add_table(const std::string& name, std::shared_ptr<Table> table);
 
-  // Removes the table from the storage manger.
+  // Removes the table from the storage manager.
   void drop_table(const std::string& name);
 
   // Returns the table instance with the given name.
@@ -45,6 +45,7 @@ class StorageManager : private Noncopyable {
   StorageManager& operator=(StorageManager&&) = default;
 
   // Implementation goes here
+  std::unordered_map<std::string, std::shared_ptr<Table>> tableNameMap;
 };
 
 }  // namespace opossum
