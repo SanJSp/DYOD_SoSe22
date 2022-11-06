@@ -16,12 +16,11 @@ namespace opossum {
 
 void Chunk::add_segment(const std::shared_ptr<AbstractSegment> segment) {
   _contents.push_back(segment);
-  // Implementation goes here
 }
 
 void Chunk::append(const std::vector<AllTypeVariant>& values) {
   // Implementation goes here
-  Assert(values.size() == _contents.size(), "Not same size of segments");
+  DebugAssert(values.size() == _contents.size(), "Not same size of segments");
 
   int index = 0;
   for(auto item: values){
@@ -32,7 +31,7 @@ void Chunk::append(const std::vector<AllTypeVariant>& values) {
 
 std::shared_ptr<AbstractSegment> Chunk::get_segment(const ColumnID column_id) const {
   // Implementation goes here
-
+  DebugAssert(column_id < _contents.size(), "ColumnID greate than Column count");
   return _contents[column_id];
 }
 

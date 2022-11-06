@@ -76,6 +76,10 @@ class Table : private Noncopyable {
 
  protected:
   // Implementation goes here
+  std::vector<std::shared_ptr<Chunk>> _contents;
+  std::unordered_map<std::string, int16_t> column_name_index;
+  std::vector<std::pair<std::string,std::string>> column_definition_by_index;
+  ChunkOffset my_target_chunk_size;
 };
 
 }  // namespace opossum
